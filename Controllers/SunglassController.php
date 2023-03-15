@@ -8,4 +8,13 @@ class SunglassController{
     view("sunglasses/index");
   }
 
+
+  public function get_test(){
+    
+    dd("test");
+  }
+
+
+
+
 }
