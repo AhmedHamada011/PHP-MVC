@@ -1,15 +1,16 @@
 <?php
 
-function view($file){
+function view($file,$attributes = []){
 
   $file = str_replace(".","/",$file);
   $path = "views/$file.view.php";
 
-  if(file_exists($path))
+  if (file_exists($path)) {
+    extract($attributes);
     require_once("views/$file.view.php");
+  }
   else
     error(404);
-
 }
 
 function error($code){
@@ -25,4 +26,4 @@ function dd($var){
   echo "</pre>";
 
   die();
-}
+} 

@@ -7,6 +7,9 @@
   <title>Index</title>
 </head>
 <body>
-  hello from index
+  <?php foreach($products as $product):?>
+    <li><?php echo $product["name"] ?></li>
+      
+  <?php endforeach?>
 </body>
 </html>
