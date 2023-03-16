@@ -24,6 +24,9 @@ function dd($var){
   echo "<pre>";
   var_dump($var);
   echo "</pre>";
-
   die();
-} 
+}
+
+function assets($path){
+  return str_replace("/",DIRECTORY_SEPARATOR,"public/assets/" . $path);
+}

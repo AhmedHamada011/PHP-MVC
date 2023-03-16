@@ -29,11 +29,19 @@ class MySQLHandler{
   }
 
   public function query_records_by_page($table,$limit=0){
+
     $sql = "SELECT * FROM `$table` LIMIT " .  (($limit-1) * RECORD_PER_PAGE) . "," . RECORD_PER_PAGE;
 
-
-    
     return $this->get_results($sql);
+
+  }
+
+  public function query_record_by_id($table, $id){
+
+    $sql = "SELECT * FROM `$table` WHERE id=" . intval($id);
+
+    return $this->get_results($sql);
+
   }
 
 
