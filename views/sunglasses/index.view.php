@@ -10,11 +10,14 @@
 <body>
 
   <div class="container">
-
     <nav>
       <h1>Sunglasses Shop</h1>
     </nav>
     <div>
+
+      <div>
+        <a href="/create" class="btn btn-primary">Insert new</a>
+      </div>
     <table class="table table-striped table-hover">
       <thead>
         <tr>

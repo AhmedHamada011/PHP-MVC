@@ -5,16 +5,25 @@ class Router
   public static function get($controller, $method)
   {
 
-      $controller = new $controller();
+    $controller = new $controller();
 
-      if (method_exists($controller, $method)) {
+    if (method_exists($controller, $method)) {
 
-        $controller->$method();
+      $controller->$method();
 
-      }
+    }
   }
 
+  public static function post($controller, $method)
+  {
+    $controller = new $controller();
 
+    if (method_exists($controller, $method)) {
+
+      $controller->$method($_POST);
+
+    }
+  }
 
   public static function get_product_with_id($controller, $method)
   {
@@ -39,6 +48,9 @@ class Router
       $controller->$method($page);
     }
   }
+
+
+
 
 
   private static function getId($url){

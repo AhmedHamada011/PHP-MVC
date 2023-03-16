@@ -33,6 +33,13 @@ class SunglassController
     }
 
 
+    public function get_create_page()
+    {
+        view("sunglasses/create");
+    }
+
+
+
     public function get_product_page($limit)
     {
         $result = $this->db->query_records_by_page($this->table, $limit);
@@ -55,6 +62,12 @@ class SunglassController
           "previous"    => $previous
         ]);
     }
+
+    public function store($data){
+      $this->db->insert($this->table,$data);
+
+      header("location: /?page=1");
+    }
     
     private function array_change_key_case_recursive($arr)
     {
@@ -63,5 +76,7 @@ class SunglassController
             return array_change_key_case($item);
       },array_change_key_case($arr));
     }
+
+
     
 }

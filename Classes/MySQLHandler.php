@@ -45,6 +45,34 @@ class MySQLHandler{
   }
 
 
+  public function insert($table,$data){
+
+    $sql = "INSERT INTO `$table` ( ";
+
+    foreach($data as $column => $value){
+
+      $sql .= "$column, ";
+
+    }
+    $sql .= ")";
+    $sql = str_replace(", )", ")", $sql);
+
+    $sql .= " VALUES (";
+
+    foreach($data as $column => $value){
+
+      $sql .= "'$value', ";
+
+    }
+
+    $sql .= ")";
+    $sql = str_replace(", )", ")", $sql);
+
+    $result = $this->get_results($sql);
+
+    return $result;
+
+  }
 
 
   private function get_results($sql){
@@ -55,5 +83,8 @@ class MySQLHandler{
 
     return $result;
   }
+
+
+
 
 }

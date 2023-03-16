@@ -23,7 +23,7 @@
       <div class="col-6 mt-5">
         <h2 class="title"><?= $product["product_name"]?></h2>
         <p class="text">Price: <?= $product["list_price"]?></p>
-        <p class="text">Product Code: <?= $product["product_code"]?>$</p>
+        <p class="text">Product Code: <?= $product["product_code"]?></p>
         <p class="text">Category: <?= $product["category"]?></p>
         <p class="text">Made In <?= $product["country"]?></p>
         <p class="text"><small class="text-muted">Only <?= $product["units_in_stock"]?> item in stock</small></p>
