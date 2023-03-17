@@ -5,6 +5,8 @@ class Router
   public static function get($controller, $method)
   {
 
+    if($_SERVER["REQUEST_URI"] === "/")
+      header("location:?page=1");
     $controller = new $controller();
 
     if (method_exists($controller, $method)) {
@@ -13,6 +15,20 @@ class Router
 
     }
   }
+
+
+  public static function get_all($controller, $method)
+  {
+
+    $controller = new $controller();
+
+    if (method_exists($controller, $method)) {
+
+      $controller->$method();
+
+    }
+  }
+
 
   public static function post($controller, $method)
   {
@@ -50,13 +66,26 @@ class Router
   }
 
 
-
+  public static function get_product_with_name($controller, $method)
+  {
+      $controller = new $controller();
+      if (method_exists($controller, $method)) {
+        $name = self::getName($_SERVER["REQUEST_URI"]);
+        $controller->$method($name);
+      }
+  }
 
 
   private static function getId($url){
 
     $url = str_replace("/","",$url);
     return is_numeric($url) ? $url : error(404);
+  }
+
+
+  private static function getName($url){
+    $url = str_replace("search=","",parse_url($url)["query"]);
+    return !empty($url) ? $url : error(404);
   }
 
 }

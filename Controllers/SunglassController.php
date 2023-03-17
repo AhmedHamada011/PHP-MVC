@@ -11,6 +11,9 @@ class SunglassController
         $this->db = new MySQLHandler();
     }
 
+
+
+
     public function get_all()
     {
         $products = $this->db->query_all($this->table);
@@ -61,6 +64,14 @@ class SunglassController
           "next"        => $next,
           "previous"    => $previous
         ]);
+    }
+
+
+    public function get_product_with_name($name){
+      $products = $this->db->search_with_name($this->table,$name);
+
+      view("sunglasses/index", ["products"=> $products]);
+
     }
 
     public function store($data){

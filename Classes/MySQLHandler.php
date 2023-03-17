@@ -1,6 +1,6 @@
 <?php
 
-class MySQLHandler{
+class MySQLHandler implements DBHandler{
 
   public $handler;
   public function __construct()
@@ -40,6 +40,16 @@ class MySQLHandler{
 
     $sql = "SELECT * FROM `$table` WHERE id=" . intval($id);
 
+    return $this->get_results($sql);
+
+  }
+
+
+  public function search_with_name($table, $name){
+    
+    $sql = "SELECT * FROM `$table` WHERE product_name LIKE '%$name%'";
+    
+    // dd($sql);
     return $this->get_results($sql);
 
   }

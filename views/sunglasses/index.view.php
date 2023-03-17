@@ -9,15 +9,28 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="container mt-3">
     <nav>
       <h1>Sunglasses Shop</h1>
     </nav>
     <div>
 
-      <div>
+      <form  method="get" class="search mb-3 row">
+        <div class="col-4">
+        <input type="text" name="search" class="form form-control" placeholder="search by name">
+        </div>
+        <div class="col-1">
+        <input type="submit" value="search"  class="btn btn-primary">
+        </div>
+
+      </form>
+      <div class="d-inline">
         <a href="/create" class="btn btn-primary">Insert new</a>
       </div>
+      <div class="d-inline">
+        <a href="/all" class="btn btn-primary">show all products</a>
+      </div>
+
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -49,7 +62,7 @@
     <li class="page-item <?= $current == 1 ? "disabled" : ""?>"><a class="page-link" href="?page=<?php echo $previous?>">Previous</a></li>
 
     <?php for($i=1;$i<=$total_pages;$i++):?>
-    <li class="page-item"><a class="page-link" href="?page=<?php echo $i?>"><?php echo $i?></a></li>
+    <li class="page-item <?php echo $current === $i ? "active" : "" ?>"><a class="page-link" href="?page=<?php echo $i?>"><?php echo $i?></a></li>
     <?php endfor?>
 
     <li class="page-item <?= $current == $total_pages ? "disabled" : ""?>"><a class="page-link"  href="?page=<?php echo $next?>">Next</a></li>
